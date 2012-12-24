@@ -1,0 +1,1 @@
+document.write('<a href="id_48042.html">敢死队</a> <a href="id_48042.html">僵尸胡安</a> <a href="id_48042.html">生化危机5</a> <a href="id_48042.html">普罗米修斯</a> <a href="id_48042.html">新白发魔女传</a> <a href="id_48042.html">绝色武器</a> <a href="id_48042.html">听风者</a>');
