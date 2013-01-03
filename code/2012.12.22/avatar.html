@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="zh-CN" id="html">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>头像</title>
+<style>
+.box{margin:30px auto;width:300px;height:300px;background:#ccc;position:relative;overflow:hidden;}
+.bg{background:#2e2e2e;position:absolute;width:100%;height:100%;}
+.bgL{width:150px;height:100%;overflow:hidden;position:relative;float:left;}
+.bgL .main{background:#ccc;position:absolute;width:280%;height:200%;border-radius:150%;top:-100%;right:-230%;}
+.bgR{width:150px;height:100%;overflow:hidden;position:relative;float:right;}
+.bgR .main{background:#ccc;position:absolute;width:280%;height:200%;border-radius:150%;top:-100%;left:-230%;}
+.tieA{background:#fff;position:absolute;right:50%;width:50px;height:55%;top:8%;margin-right:-25px;}
+.tieAL{background:#ccc;border-radius:100% 0 0 0;height:60%;right:38%;position:absolute;transform:rotate(170deg);width:25px;}
+.tieAR{background:#ccc;border-radius:0 100% 0 0;height:60%;left:38%;position:absolute;transform:rotate(190deg);width:25px;}
+.tieB{border-color:#FFF transparent transparent;border-style:solid;border-width:40px;position:absolute;right:50%;top:8%;margin-right:-40px;}
+.tieC{background:#FFF;position:absolute;left:50%;width:50px;height:14%;top:170px;border-radius:0 0 45px 45px;margin-left:-25px;}
+.tieD{background:#FFF;position:absolute;transform:skew(0deg, -46deg) rotate(-22deg);width:24px;height:50px;left:50%;margin-left:-10px;top:176px;}
+.collarL{border-color:transparent transparent #eee;border-style:solid;border-width:58px;position:absolute;transform:rotate(285deg);right:31%;top:-14%;}
+.collarR{border-color:transparent transparent #eee;border-style:solid;border-width:58px;position:absolute;transform:rotate(75deg);left:31%;top:-14%;}
+</style>
+</head>
+<body>
+<div class="box"><div class="bg"></div><div class="bgL"><div class="main"></div></div><div class="bgR"><div class="main"></div></div><div class="tieA"></div><div class="tieAL"></div><div class="tieAR"></div><div class="tieB"></div><div class="tieC"></div><div class="tieD"></div><div class="collarL"></div><div class="collarR"></div>
+</div>
+</body>
+</html>

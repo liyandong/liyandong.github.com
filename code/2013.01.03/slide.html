@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="zh-CN" id="html">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>幻灯</title>
+<style>
+*{
+	margin:0;
+	padding:0;
+}
+body{
+	background:#222;
+	margin:30px auto;
+	width:960px;
+}
+/* slide */
+#slide{
+	width:960px;
+	height:300px;
+	background:#FFF;
+	overflow:hidden;
+	position:relative;
+}
+#slide img{
+	width:960px;
+	height:300px;
+}
+#slide .list{
+	position:absolute;
+	bottom:5px;
+	right:5px;
+}
+#slide .list li{
+	float:left;
+	width:10px;
+	height:10px;
+	font-size:0;
+	margin:0 5px 0 0;
+	display:block;
+	background:#0072ab;
+	border:1px solid #fff;
+	border-radius:5px;
+	cursor:pointer;
+}
+#slide .list li.on{
+	background:#444;
+}
+</style>
+<script type="text/javascript" src="http://lib.sinaapp.com/js/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript">
+var slide={
+	'i':0,
+	't':true,
+	'start':function(a,b,c){
+		$(a).hover(
+		function(){ slide.t = false;},
+		function(){ slide.t = true;});
+		if(typeof c == 'undefined'){c=$(a).find(b).length;}
+		if($(a+' .list').length==0){
+			$(a).append('<ul class="list"></ul>');
+			for(var i = 0; i < c; i++){$(a+' .list').append('<li onmouseover="slide.tab(\''+a+'\','+i+','+c+')" class="slideList_'+i+'"></li>');}
+		}
+		for(var i = 0; i < c; i++){$(a).find(b).eq(i).addClass('slide_'+i);}
+		if(slide.t == true ){
+		if(slide.i>=c){
+		slide.i=0;
+		setTimeout('slide.start("'+a+'","'+b+'","'+c+'")',5000);
+		slide.tab(a,slide.i,c);
+		slide.i=1;
+		}else{
+		setTimeout('slide.start("'+a+'","'+b+'","'+c+'")',5000);
+		slide.tab(a,slide.i,c);
+		slide.i=slide.i+1;
+		}
+		}else{
+		setTimeout('slide.start("'+a+'","'+b+'","'+c+'")',1000);
+		}
+	},
+	'tab':function(a,b,c) {
+	try {
+		for(var i = 0; i < c; i++){
+			if (i != b) {
+			$(a+" .slideList_" + i).removeClass('on');
+			$(a+" .slide_" + i).hide();
+			}
+		}
+		$(a+" .slideList_" + b).addClass('on');
+		$(a+" .slide_" + b).fadeIn();
+		slide.i=b;
+	}catch(f){}
+	}
+}
+jQuery(document).ready(function(){
+/* 开始 */
+slide.start('#slide','img');
+});
+</script>
+</head>
+<body>
+<div id="slide">
+	<a href="javascript:alert('#0');"><img src="http://ww4.sinaimg.cn/large/a74ecc4cjw1dypuld9j26j.jpg"/></a>
+	<a href="javascript:alert('#1');"><img src="http://ww4.sinaimg.cn/large/a74ecc4cjw1dxqbesqxg6j.jpg"/></a>
+	<a href="javascript:alert('#2');"><img src="http://ww3.sinaimg.cn/large/a74ecc4cjw1dxv5rawojuj.jpg"/></a>
+	<a href="javascript:alert('#3');"><img src="http://ww4.sinaimg.cn/large/a74ecc4cjw1dx3642iu1ij.jpg"/></a>
+</div>
+</body>
+</html>
