@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="zh-CN" id="html">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>幻灯</title>
+<style>
+*{
+	margin:0;
+	padding:0;
+}
+body{
+	background:#222;
+	margin:30px auto;
+	width:960px;
+}
+/* slide */
+#slide,#slide1{
+	width:960px;
+	height:300px;
+	background:#FFF;
+	overflow:hidden;
+	position:relative;
+	margin:10px 0;
+}
+#slide img,#slide1 img{
+	width:960px;
+	height:300px;
+	border:none;
+}
+#slide .list,#slide1 .list{
+	position:absolute;
+	bottom:5px;
+	right:5px;
+}
+#slide .list li,#slide1 .list li{
+	float:left;
+	width:10px;
+	height:10px;
+	font-size:0;
+	margin:0 5px 0 0;
+	display:block;
+	background:#0072ab;
+	border:1px solid #fff;
+	border-radius:5px;
+	cursor:pointer;
+}
+#slide .list li.on,#slide1 .list li.on{
+	background:#444;
+}
+</style>
+<script type="text/javascript" src="http://lib.sinaapp.com/js/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript">
+slide=function(a,b,c){
+	var slideName=a.split('#')[1]+'_'+(new Date().getTime());
+	$(a).addClass(slideName);
+	if(typeof c == 'undefined'){var c=5000;}
+	var d=$(a).find(b).length;
+		if($('.'+slideName+' .list').length==0){
+			$(a).append('<ul class="list"></ul>');
+			for(var i = 0; i < d; i++){
+			$(a+' .list').append('<li onmouseover="slide.tab(\'.'+slideName+'\','+i+','+d+')" class="slideList_'+i+'"></li>');
+			if(i==0) $('.'+slideName).find(b).eq(i).css("display","inline"); else $(a).find(b).eq(i).css("display","none");
+			if(i==0) $('.'+slideName+' .list').find("li").eq(i).addClass('on');
+			$(a).find(b).eq(i).addClass('slide_'+i);
+			}
+		}
+	slide.start('.'+slideName+'',''+b+'',d,c);
+	}
+slide.start=function(a,b,c,d){
+		var play=function(){
+		for(var i = 0; i < c; i++){
+			if($(a).find(b).eq(i).css('display')=='inline'){var j=i+1}
+		}
+		if(j>=c){var j=0;}
+		slide.tab(""+a+"",""+j+"",c);
+		}
+		var timerID=function(){return a.split('#')[1]+'_'+(new Date().getTime());}
+		var autoPlay=function(){
+			timerID = window.setInterval(play,d);
+		};
+		var autoStop = function(){
+			window.clearInterval(timerID);
+		};
+		$(a).hover(autoStop,autoPlay).mouseout();
+	}
+slide.tab=function(a,b,c) {
+	try {
+		for(var i = 0; i < c; i++){
+			if (i != b) {
+			$(a+" .slideList_" + i).removeClass('on');
+			$(a+" .slide_" + i).hide();
+			}
+		}
+		$(a+" .slideList_" + b).addClass('on');
+		$(a+" .slide_" + b).fadeIn();
+	}catch(f){}
+	}
+	
+jQuery(document).ready(function(){
+/* 开始 */
+slide('#slide','img',2000);
+slide('#slide1','img');
+});
+</script>
+</head>
+<body>
+<div id="slide">
+	<a href="javascript:alert('#0');"><img src="http://ww4.sinaimg.cn/large/a74ecc4cjw1dypuld9j26j.jpg"/></a>
+	<a href="javascript:alert('#1');"><img src="http://ww4.sinaimg.cn/large/a74ecc4cjw1dxqbesqxg6j.jpg"/></a>
+	<a href="javascript:alert('#2');"><img src="http://ww3.sinaimg.cn/large/a74ecc4cjw1dxv5rawojuj.jpg"/></a>
+	<a href="javascript:alert('#3');"><img src="http://ww4.sinaimg.cn/large/a74ecc4cjw1dx3642iu1ij.jpg"/></a>
+	<a href="javascript:alert('#1');"><img src="http://ww4.sinaimg.cn/large/a74ecc4cjw1dxqbesqxg6j.jpg"/></a>
+	<a href="javascript:alert('#2');"><img src="http://ww3.sinaimg.cn/large/a74ecc4cjw1dxv5rawojuj.jpg"/></a>
+	<a href="javascript:alert('#3');"><img src="http://ww4.sinaimg.cn/large/a74ecc4cjw1dx3642iu1ij.jpg"/></a>
+</div>
+<div id="slide1">
+	<a href="javascript:alert('#0');"><img src="http://ww4.sinaimg.cn/large/a74ecc4cjw1dypuld9j26j.jpg"/></a>
+	<a href="javascript:alert('#1');"><img src="http://ww4.sinaimg.cn/large/a74ecc4cjw1dxqbesqxg6j.jpg"/></a>
+	<a href="javascript:alert('#2');"><img src="http://ww3.sinaimg.cn/large/a74ecc4cjw1dxv5rawojuj.jpg"/></a>
+	<a href="javascript:alert('#3');"><img src="http://ww4.sinaimg.cn/large/a74ecc4cjw1dx3642iu1ij.jpg"/></a>
+</div>
+</body>
+</html>
