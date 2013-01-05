@@ -65,7 +65,7 @@ slide=function(a,b,c){
 			}
 		}
 	slide.start('.'+slideName+'',''+b+'',d,c);
-	}
+	};
 slide.start=function(a,b,c,d){
 		var play=function(){
 		for(var i = 0; i < c; i++){
@@ -73,8 +73,8 @@ slide.start=function(a,b,c,d){
 		}
 		if(j>=c){var j=0;}
 		slide.tab(""+a+"",""+j+"",c);
-		}
-		var timerID=function(){return a.split('#')[1]+'_'+(new Date().getTime());}
+		};
+		var timerID=function(){return a.split('#')[1]+'_'+(new Date().getTime());};
 		var autoPlay=function(){
 			timerID = window.setInterval(play,d);
 		};
@@ -82,7 +82,7 @@ slide.start=function(a,b,c,d){
 			window.clearInterval(timerID);
 		};
 		$(a).hover(autoStop,autoPlay).mouseout();
-	}
+	};
 slide.tab=function(a,b,c) {
 	try {
 		for(var i = 0; i < c; i++){
@@ -94,7 +94,7 @@ slide.tab=function(a,b,c) {
 		$(a+" .slideList_" + b).addClass('on');
 		$(a+" .slide_" + b).fadeIn();
 	}catch(f){}
-	}
+	};
 	
 jQuery(document).ready(function(){
 /* 开始 */
